@@ -1,0 +1,16 @@
+shared:
+  image: node:12
+  steps:
+    - ls
+
+jobs:
+  unit-test:
+    requires: [ ~pr, ~sd@4879:main ]
+  deploy:
+    requires: [ unit-test ]
+  acceptance-test:
+    requires: [ deploy ]
+  cleanup:
+    requires: []
+  revert:
+    requires: []
