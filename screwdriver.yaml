@@ -4,13 +4,10 @@ shared:
     - ls
 
 jobs:
-  unit-test:
-    requires: [ ~pr, ~sd@4879:main ]
-  deploy:
-    requires: [ unit-test ]
-  acceptance-test:
-    requires: [ deploy ]
-  cleanup:
-    requires: []
-  revert:
-    requires: []
+  test-1:
+    requires: [ ~sd@4879:main-1 ]
+    
+  trigger-2:
+    requires: [ ~sd@4879:main-2 ] 
+  test-2:
+    requires: [ trigger-2 ] 
